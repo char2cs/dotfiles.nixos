@@ -48,7 +48,7 @@
   home.pointerCursor = {
     gtk.enable = true;
     package = pkgs.whitesur-cursors;
-    name = "WhiteSur-gtk-theme";
+    name = "whitesur-cursors";
   };
 
   gtk = {
@@ -56,9 +56,9 @@
     theme.name = "adw-gtk3-dark";
     theme.package = pkgs.adw-gtk3;
     cursorTheme.package = pkgs.whitesur-cursors;
-    cursorTheme.name = "WhiteSur-gtk-theme";
+    cursorTheme.name = "whitesur-cursors";
     iconTheme.package = pkgs.whitesur-icon-theme;
-    iconTheme.name = "WhiteSur-gtk-theme";
+    iconTheme.name = "whitesur-icon-theme";
   };
 
   # Add stuff for your user as you see fit:

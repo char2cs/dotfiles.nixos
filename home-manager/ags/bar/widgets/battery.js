@@ -1,6 +1,9 @@
 const battery = await Service.import('battery')
 
 export function Battery () {
+    if ( battery.percent == -1 )
+        return null;
+
     return Widget.Button({
         setup: self => {
             let batteryLabel;
