@@ -82,7 +82,7 @@
 		LC_TIME = "es_AR.UTF-8";
 	};
 
-	powerManagement.powertop.enable = true;
+	# powerManagement.powertop.enable = true;
 	services.power-profiles-daemon.enable = false;
 	services.thermald.enable = true;
 	services.tlp = {
@@ -133,7 +133,9 @@
 		openssh.enable = true;
 		xserver = {
 			enable = true;
-			# displayManager.gdm.wayland = true;
+			displayManager.gdm.enable = true;
+			displayManager.gdm.wayland = true;
+			desktopManager.gnome.enable = true;
 			layout = "us";
 			xkbVariant = "";
 		};
@@ -150,7 +152,7 @@
 		hyprland = {
 			enable = true;
 			xwayland.enable = true;
-			#nvidiaPatches = true;
+			nvidiaPatches = true;
 		};
 		fish = {
 			enable = true;
@@ -196,6 +198,7 @@
 		kitty
     	fish
 		bun
+		polkit_gnome # Need to be configured
 	] ++ (with pkgs.unstable; [
 		hypridle
 		hyprlock

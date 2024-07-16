@@ -8,18 +8,36 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" "rtsx_usb_sdmmc" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
+  boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
+  boot.initrd.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia-uvm" "nvidia_drm" ];
+
+  services.xserver.exportConfiguration = true;
+  services.xserver.videoDrivers = [ "nvidia" ];
+  boot.blacklistedKernelModules = [ "nouveau" ];
+
+  hardware.nvidia = {
+	modesetting.enable = true;
+	powerManagement = {
+		enable = true;
+		# finegrained = true;
+	};
+	nvidiaSettings = false;
+  };
+
+  hardware.acpilight.enable = true;
+
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.production;
+
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/528a7f62-4249-4fed-aa53-60f8a085d5a2";
+    { device = "/dev/disk/by-uuid/10c7ce35-9f92-4f3a-b837-a9a5d9590ea6";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/42C5-C554";
+    { device = "/dev/disk/by-uuid/0C3E-4067";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
@@ -31,8 +49,8 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp37s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
