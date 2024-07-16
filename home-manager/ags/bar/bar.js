@@ -1,5 +1,4 @@
 const hyprland = await Service.import('hyprland');
-const notifications = await Service.import("notifications");
 const systemtray = await Service.import("systemtray");
 
 import { Workspaces } from './widgets/hyprland.js';
@@ -13,22 +12,6 @@ function ClientTitle() {
     return Widget.Label({
         class_name: "client-title",
         label: hyprland.active.client.bind("title"),
-    })
-}
-
-function Notification() {
-    const popups = notifications.bind("popups")
-    return Widget.Box({
-        class_name: "notification",
-        visible: popups.as(p => p.length > 0),
-        children: [
-            Widget.Icon({
-                icon: "preferences-system-notifications-symbolic",
-            }),
-            Widget.Label({
-                label: popups.as(p => p[0]?.summary || ""),
-            }),
-        ],
     })
 }
 

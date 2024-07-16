@@ -1,6 +1,11 @@
 import brightness from '../services/brightness.js';
 
+const battery = await Service.import('battery')
+
 export function Brightness () {
+    if ( battery.percent == -1 )
+        return null;
+
     return Widget.Button({
         onScrollUp: () => brightness.value += .01,
         onScrollDown: () => brightness.value -= .01,

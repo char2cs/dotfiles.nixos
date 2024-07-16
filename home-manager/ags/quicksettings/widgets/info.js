@@ -58,7 +58,7 @@ export function Info() {
                         child: Widget.Icon({ icon: "restart", css: "font-size: 25px" })
                     }),
                     Widget.Button({
-                        onClicked: () => { Utils.exec("shutdown") },
+                        onClicked: () => { Utils.exec("shutdown -h 0") },
                         class_name: "square-button margin bg-blue",
                         child: Widget.Icon({ icon: "power", css: "font-size: 25px" })
                     }),
