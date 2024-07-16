@@ -42,7 +42,7 @@
     ".config/Scripts/battery-status".source   = ./hypr/Scripts/battery-status;
     ".config/Scripts/layout-status".source    = ./hypr/Scripts/layout-status;
 
-    ".config/Code/User".source  = ./vscode/settings.json;
+    ".config/Code/User/settings.json".source  = ./vscode/User/settings.json;
   };
 
   home.pointerCursor = {
