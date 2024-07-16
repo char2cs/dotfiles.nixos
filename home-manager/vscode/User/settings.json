@@ -2,5 +2,6 @@
     "git.openRepositoryInParentFolders": "never",
     "editor.minimap.enabled": false,
     "window.titleBarStyle": "custom",
-    "security.workspace.trust.untrustedFiles": "open"
+    "security.workspace.trust.untrustedFiles": "open",
+    "git.confirmSync": false
 }
