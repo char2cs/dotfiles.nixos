@@ -4,5 +4,6 @@
     "window.titleBarStyle": "custom",
     "security.workspace.trust.untrustedFiles": "open",
     "git.confirmSync": false,
-    "workbench.colorTheme": "Ayu Dark Bordered"
+    "workbench.colorTheme": "Ayu Dark Bordered",
+    "git.enableSmartCommit": true
 }
