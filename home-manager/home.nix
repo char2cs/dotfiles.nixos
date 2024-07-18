@@ -74,7 +74,9 @@
 	  vscode
     spotify
     google-chrome
-  ];
+  ] ++ (with pkgs.unstable; [
+
+  ]);
 
   # Enable home-manager and git
   wayland.windowManager.hyprland = {
