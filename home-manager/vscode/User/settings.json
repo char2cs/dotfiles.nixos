@@ -6,5 +6,6 @@
     "git.confirmSync": false,
     "workbench.colorTheme": "Ayu Dark Bordered",
     "git.enableSmartCommit": true,
-    "workbench.iconTheme": "vscode-icons"
+    "workbench.iconTheme": "vscode-icons",
+    "window.zoomLevel": -1
 }
