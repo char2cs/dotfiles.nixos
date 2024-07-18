@@ -32,6 +32,7 @@
 		];
 		config = {
 			allowUnfree = true;
+			nvidia.acceptLicense = true;
 		};
 	};
 
@@ -152,7 +153,7 @@
 		hyprland = {
 			enable = true;
 			xwayland.enable = true;
-			nvidiaPatches = true;
+			enableNvidiaPatches = true;
 		};
 		fish = {
 			enable = true;
