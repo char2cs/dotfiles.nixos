@@ -199,7 +199,8 @@
 		kitty
     	fish
 		bun
-		polkit_gnome # Need to be configured
+		polkit_gnome
+		xdg-desktop-portal-wlr
 	] ++ (with pkgs.unstable; [
 		hypridle
 		hyprlock

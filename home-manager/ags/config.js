@@ -8,10 +8,10 @@ setupQuickSettings();
 App.config({
     windows: [
         // this is where window definitions will go
-        Bar(0),
+        // Bar(0),
         Bar(1),
         applauncher,
-        NotificationPopups(0),
+       	// NotificationPopups(0),
         NotificationPopups(1)
     ],
     style: './style.css',
