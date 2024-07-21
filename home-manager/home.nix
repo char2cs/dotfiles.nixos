@@ -74,7 +74,10 @@
 	  vscode
     spotify
     google-chrome
-  ];
+	obs-studio
+  ] ++ (with pkgs.unstable; [
+	hyprshot
+  ]);
 
   # Enable home-manager and git
   wayland.windowManager.hyprland = {
