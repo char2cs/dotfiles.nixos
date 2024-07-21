@@ -74,9 +74,9 @@
 	  vscode
     spotify
     google-chrome
-	obs-studio
+	  obs-studio
   ] ++ (with pkgs.unstable; [
-	hyprshot
+	  hyprshot
   ]);
 
   # Enable home-manager and git
@@ -84,9 +84,9 @@
     enable = true;
     settings = {
       env = [
-        "NIXOS_OZONE_WL,1" # for any ozone-based browser & electron apps to run on wayland
-        "MOZ_ENABLE_WAYLAND,1" # for firefox to run on wayland
-        "MOZ_WEBRENDER,1"
+        # "NIXOS_OZONE_WL,1" # for any ozone-based browser & electron apps to run on wayland
+        # "MOZ_ENABLE_WAYLAND,1" # for firefox to run on wayland
+        # "MOZ_WEBRENDER,1"
 
         # misc
         "_JAVA_AWT_WM_NONREPARENTING,1"
@@ -96,11 +96,11 @@
         "GDK_BACKEND,wayland"
 	
 	      # Nvidia
-      	"__GLX_VENDOR_LIBRARY_NAME,nvidia"
-	      "GBM_BACKEND,nvidia-drm"
-	      "XDG_SESSION_TYPE,wayland"
-	      "LIBVA_DRIVER_NAME,nvidia"
-	      "WLR_NO_HARDWARE_CURSORS,1"
+      	# "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+	      # "GBM_BACKEND,nvidia-drm"
+	      # "XDG_SESSION_TYPE,wayland"
+	      # "LIBVA_DRIVER_NAME,nvidia"
+	      # "WLR_NO_HARDWARE_CURSORS,1"
       ];
     };
     extraConfig = builtins.readFile ./hypr/hyprland.conf;

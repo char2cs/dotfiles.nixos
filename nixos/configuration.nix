@@ -153,7 +153,7 @@
 		hyprland = {
 			enable = true;
 			xwayland.enable = true;
-			enableNvidiaPatches = true;
+			# enableNvidiaPatches = true;
 		};
 		fish = {
 			enable = true;

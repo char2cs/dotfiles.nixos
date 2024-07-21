@@ -7,5 +7,5 @@
     "workbench.colorTheme": "Ayu Dark Bordered",
     "git.enableSmartCommit": true,
     "workbench.iconTheme": "vscode-icons",
-    "window.zoomLevel": -1
+    "window.zoomLevel": 0
 }
