@@ -77,6 +77,7 @@
 	  obs-studio
   ] ++ (with pkgs.unstable; [
 	  hyprshot
+	glab
   ]);
 
   # Enable home-manager and git
