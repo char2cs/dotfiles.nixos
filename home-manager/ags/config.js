@@ -9,10 +9,10 @@ App.config({
     windows: [
         // this is where window definitions will go
         // Bar(0),
-        Bar(1),
+        Bar(0),
         applauncher,
        	// NotificationPopups(0),
-        NotificationPopups(1)
+        NotificationPopups(0)
     ],
     style: './style.css',
 })
