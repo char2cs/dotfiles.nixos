@@ -59,6 +59,13 @@
 		};	
 	};
 
+	systemd.sleep.extraConfig = ''
+  		AllowSuspend=no
+  		AllowHibernation=no
+  		AllowHybridSleep=no
+  		AllowSuspendThenHibernate=no
+	'';
+
 	networking.hostName = "nixos"; # Define your hostname.
 	# networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
