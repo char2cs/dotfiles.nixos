@@ -59,6 +59,8 @@
 		};	
 	};
 
+	boot.kernelParams = [ "mem_sleep_default=deep" ];
+
 	networking.hostName = "nixos"; # Define your hostname.
 	# networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -90,10 +92,12 @@
 		enable = true;
 		settings = {
 			CPU_SCALING_GOVERNOR_ON_AC = "performance";
+			CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+			
 			CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
-			CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_performance";
+			CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
 
-			CPU_SCALING_MAX_FREQ_ON_BAT = 3000000;
+			#CPU_SCALING_MAX_FREQ_ON_BAT = 3000000;
 
 			CPU_MIN_PERF_ON_AC = 0;
 			CPU_MAX_PERF_ON_AC = 100;
@@ -123,6 +127,19 @@
 		docker.enable = true;
 	};
 
+	security.polkit.extraConfig = ''
+    		polkit.addRule(function(action, subject) {
+        		if (
+				action.id == "org.freedesktop.login1.suspend" ||
+            			action.id == "org.freedesktop.login1.suspend-multiple-sessions" ||
+            			action.id == "org.freedesktop.login1.hibernate" ||
+            			action.id == "org.freedesktop.login1.hibernate-multiple-sessions"
+			) {
+            			return polkit.Result.NO;
+       	 		}
+    		});
+  	'';
+
 	# Enable sound with pipewire.
 	hardware.pulseaudio.enable = false;
 	security.rtkit.enable = true;
@@ -136,6 +153,7 @@
 			enable = true;
 			displayManager.gdm.enable = true;
 			displayManager.gdm.wayland = true;
+			displayManager.gdm.autoSuspend = false;
 			desktopManager.gnome.enable = true;
 			layout = "us";
 			xkbVariant = "";
@@ -146,6 +164,13 @@
 			alsa.support32Bit = true;
 			pulse.enable = true;
 		};
+		#openvpn.servers = {
+		#	officeVPN = { 
+		#		config = '' config /home/char2cs/Documents/vpn-fixear-tarano.ovpn '';
+		#		updateResolvConf = true; 
+		#	};
+		#};
+		teamviewer.enable = true;
 	};
 
 	programs = {
@@ -201,6 +226,9 @@
 		bun
 		polkit_gnome
 		xdg-desktop-portal-wlr
+		openssl
+		openvpn
+		teamviewer
 	] ++ (with pkgs.unstable; [
 		hypridle
 		hyprlock

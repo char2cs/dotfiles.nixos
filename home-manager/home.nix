@@ -42,7 +42,7 @@
     ".config/Scripts/battery-status".source   = ./hypr/Scripts/battery-status;
     ".config/Scripts/layout-status".source    = ./hypr/Scripts/layout-status;
 
-    ".config/Code/User/settings.json".source  = ./vscode/User/settings.json;
+    #".config/Code/User/settings.json".source  = ./vscode/User/settings.json;
   };
 
   home.pointerCursor = {
@@ -75,9 +75,16 @@
     spotify
     google-chrome
 	  obs-studio
+	anydesk
+	teamviewer
+	insomnia
+	jetbrains.jdk
+	jetbrains.idea-ultimate
   ] ++ (with pkgs.unstable; [
 	  hyprshot
 	glab
+	bluetuith
+	go-task
   ]);
 
   # Enable home-manager and git
@@ -140,11 +147,12 @@
     };
 
     firefox.enable = true;
+    alacritty.enable = true;
   };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  home.stateVersion = "23.05";
+  home.stateVersion = "23.11";
 }
