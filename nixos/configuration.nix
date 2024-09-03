@@ -103,10 +103,24 @@
 			CPU_MAX_PERF_ON_AC = 100;
 
 			CPU_MIN_PERF_ON_BAT = 0;
-			CPU_MAX_PERF_ON_BAT = 60;
+			CPU_MAX_PERF_ON_BAT = 40;
 		};
 	};
-
+	services.auto-cpufreq = { 
+		enable = true; 
+		settings = { 
+			battery = {
+          			governor = "powersave";
+          			turbo = "never";
+        		};
+        		charger = {
+          			governor = "powersave";
+          			turbo = "auto";
+        		};
+      		};
+	};
+	services.flatpak.enable = true;
+	
 	# Define a user account. Don't forget to set a password with ‘passwd’.
 	users.users = {
 		char2cs = {
@@ -126,19 +140,6 @@
 		libvirtd.enable = true;
 		docker.enable = true;
 	};
-
-	security.polkit.extraConfig = ''
-    		polkit.addRule(function(action, subject) {
-        		if (
-				action.id == "org.freedesktop.login1.suspend" ||
-            			action.id == "org.freedesktop.login1.suspend-multiple-sessions" ||
-            			action.id == "org.freedesktop.login1.hibernate" ||
-            			action.id == "org.freedesktop.login1.hibernate-multiple-sessions"
-			) {
-            			return polkit.Result.NO;
-       	 		}
-    		});
-  	'';
 
 	# Enable sound with pipewire.
 	hardware.pulseaudio.enable = false;
@@ -172,6 +173,14 @@
 		#};
 		teamviewer.enable = true;
 	};
+
+	programs.dconf.profiles.gdm.databases = [{
+       		settings."org/gnome/settings-daemon/plugins/power" = {
+         		power-button-action = "suspend";
+         		sleep-inactive-ac-timeout = lib.gvariant.mkInt32 0;
+        		sleep-inactive-battery-timeout = lib.gvariant.mkInt32 1;
+       		};
+     	}];
 
 	programs = {
 		thunar.enable = true;
@@ -229,6 +238,7 @@
 		openssl
 		openvpn
 		teamviewer
+		flatpak
 	] ++ (with pkgs.unstable; [
 		hypridle
 		hyprlock

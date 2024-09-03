@@ -35,6 +35,9 @@
     ".config/hypr/hyprlock.conf".source       = ./hypr/hyprlock.conf;
     ".config/hypr/hyprpaper.conf".source      = ./hypr/hyprpaper.conf;
 
+    ".config/ags".source		      = ./ags;
+    ".config/ags".recursive 		      = true;
+
     ".config/kitty".source                    = ./kitty;
 
     ".config/Scripts/song-status".source      = ./hypr/Scripts/song-status;
@@ -80,6 +83,7 @@
 	insomnia
 	jetbrains.jdk
 	jetbrains.idea-ultimate
+	gftp
   ] ++ (with pkgs.unstable; [
 	  hyprshot
 	glab
@@ -118,7 +122,7 @@
     home-manager.enable = true;
     ags = {
       enable = true;
-      configDir = ./ags;
+      #configDir = ./ags;
       extraPackages = with pkgs; [
         gtksourceview
         webkitgtk
