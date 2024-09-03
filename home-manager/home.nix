@@ -35,8 +35,8 @@
     ".config/hypr/hyprlock.conf".source       = ./hypr/hyprlock.conf;
     ".config/hypr/hyprpaper.conf".source      = ./hypr/hyprpaper.conf;
 
-    ".config/ags".source		      = ./ags;
-    ".config/ags".recursive 		      = true;
+    #".config/ags".source		      = ./ags;
+    #".config/ags".recursive 		      = true;
 
     ".config/kitty".source                    = ./kitty;
 
@@ -122,7 +122,7 @@
     home-manager.enable = true;
     ags = {
       enable = true;
-      #configDir = ./ags;
+      configDir = ./shell;
       extraPackages = with pkgs; [
         gtksourceview
         webkitgtk
