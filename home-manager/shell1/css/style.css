@@ -1,7 +1,7 @@
 .bar * {
   all: unset;
   font-family: "ZedMono NF";
-  font-size: 1.0rem; }
+  font-size: .75rem; }
 
 .bar .cbox {
   margin: 5px 5px 0px 5px;
