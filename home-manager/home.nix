@@ -122,7 +122,7 @@
     home-manager.enable = true;
     ags = {
       enable = true;
-      configDir = ./shell1;
+      configDir = ./ags;
       extraPackages = with pkgs; [
         gtksourceview
         webkitgtk
