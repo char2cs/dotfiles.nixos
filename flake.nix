@@ -16,10 +16,6 @@
     templ.url = "github:a-h/templ";
     grub2-themes.url = "github:vinceliuice/grub2-themes";
     split-monitor-workspaces.url = "github:Duckonaut/split-monitor-workspaces";
-
-    matugen = {
-    	url = "github:/InioX/Matugen";
-    };
   };
 
   outputs = {
