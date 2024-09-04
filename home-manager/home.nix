@@ -121,7 +121,7 @@
     home-manager.enable = true;
     ags = {
       enable = true;
-      configDir = ./ags;
+      configDir = ./agsMac;
       extraPackages = with pkgs; [
         gtksourceview
         webkitgtk
