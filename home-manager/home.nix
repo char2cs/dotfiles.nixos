@@ -1,3 +1,4 @@
+
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 {
@@ -10,6 +11,7 @@
 }: {
   imports = [
     inputs.ags.homeManagerModules.default
+    inputs.matugen.nixosModules.default
   ];
 
   nixpkgs = {
@@ -39,6 +41,9 @@
     #".config/ags".recursive 		      = true;
 
     ".config/kitty".source                    = ./kitty;
+    ".config/alacritty".source		      = ./alacritty;
+
+    ".config/matugen".source		      = ./matugen;
 
     ".config/Scripts/song-status".source      = ./hypr/Scripts/song-status;
     ".config/Scripts/network-status".source   = ./hypr/Scripts/network-status;
@@ -64,6 +69,12 @@
     iconTheme.name = "whitesur-icon-theme";
   };
 
+  programs.matugen = {
+      enable = true;
+      variant = "dark";
+      jsonFormat = "hex";
+  };
+
   # Add stuff for your user as you see fit:
   home.packages = with pkgs; [ 
   	#steam 
@@ -84,6 +95,7 @@
 	jetbrains.jdk
 	jetbrains.idea-ultimate
 	gftp
+	inputs.matugen.packages.${system}.default
   ] ++ (with pkgs.unstable; [
 	  hyprshot
 	glab
